@@ -6,7 +6,8 @@ const {
 
 module.exports = async (req, res) => { 
     try {
-        const media = await axios.post(`${URL_SERVICE_MEDIA}/media`, req.body);
+        const id = req.params.id;
+        const media = await axios.delete(`${URL_SERVICE_MEDIA}/media/${id}`);
         return res.json(media.data);
     } catch (error) {
         console.log(error);

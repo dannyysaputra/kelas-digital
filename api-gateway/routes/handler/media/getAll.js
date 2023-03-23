@@ -6,7 +6,7 @@ const {
 
 module.exports = async (req, res) => { 
     try {
-        const media = await axios.post(`${URL_SERVICE_MEDIA}/media`, req.body);
+        const media = await axios.get(`${URL_SERVICE_MEDIA}/media`);
         return res.json(media.data);
     } catch (error) {
         console.log(error);
