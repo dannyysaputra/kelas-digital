@@ -26,10 +26,9 @@ router.get('/', async (req, res) => {
 // upload images
 router.post('/', (req, res) => {
   const image = req.body.image; // mengambil image pada body
-
   // mengecek apakah image memiliki format base 64 atau tidak
   if (!isBase64(image, { mimeRequired: true })) {
-    return res.status(404).json({ status: 'error', message: 'Invalid base64 image' });
+    return res.status(400).json({ status: 'error', message: 'Invalid base64 image' });
   }
 
   // memberikan format penamaan dan lokasi penyimpanan dari image
