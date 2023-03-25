@@ -15,7 +15,6 @@ const name = faker.name.firstName();
 //     profesion: faker.helpers.arrayElement(['web developer', 'student']),
 //     role: faker.helpers.arrayElement(['admin', 'student']),
 //     email: faker.helpers.unique(faker.internet.email, [name]),
-//     // email: faker.internet.email(),
 //     password: await pw(faker.internet.password()),
 //     created_at: new Date(),
 //     updated_at: new Date(),
