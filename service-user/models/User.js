@@ -1,11 +1,10 @@
-const uuid = require('uuid');
-const { Sequelize } = require('sequelize');
+const RefreshToken = require('./RefreshToken');
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         id: {
-            type: Sequelize.UUID,
-            defaultValue: Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
             allowNull: false,
         },
@@ -38,20 +37,26 @@ module.exports = (sequelize, DataTypes) => {
         },
         createdAt: {
             field: 'created_at',
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            allowNull: false,
         },
         updatedAt: {
             field: 'updated_at',
             type: DataTypes.Dates,
+            allowNull: false,
         }
     }, {
         tableName: 'users',
         timestamps: true,
     });
 
-    User.beforeCreate((user, _ ) => {
-        return user.id = uuid();
-    })
+    User.hasOne(RefreshToken, {
+        foreignKey: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+        }
+    });
 
     return User;
 }
