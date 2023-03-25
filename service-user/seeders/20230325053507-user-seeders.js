@@ -26,7 +26,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('users',
     [{
-      // id: faker.datatype.uuid(),
+      id: faker.datatype.uuid(),
       name: name,
       profession: faker.helpers.arrayElement(['web developer', 'student']),
       role: faker.helpers.arrayElement(['admin', 'student']),
