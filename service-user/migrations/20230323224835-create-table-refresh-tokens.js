@@ -1,5 +1,6 @@
 'use strict';
 
+const { DataTypes } = require('sequelize');
 const User = require('../models/User');
 
 /** @type {import('sequelize-cli').Migration} */
@@ -7,8 +8,8 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('refresh_tokens', { 
       id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false, 
       },
@@ -17,12 +18,9 @@ module.exports = {
         allowNull: false,
       },
       user_id: {
-        type: Sequelize.UUID,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        references: {
-          model: User,
-          key: 'id'
-        }
       },
       created_at: {
         type: Sequelize.DATE,
@@ -35,15 +33,15 @@ module.exports = {
     });
 
     // relation with users.id
-    // await queryInterface.addConstraint('refresh_tokens', {
-    //   type: 'foreign key',
-    //   name: 'REFRESH_TOKENS_USER_ID',
-    //   fields: ['user_id'],
-    //   references: {
-    //     table: 'users',
-    //     field: 'id'
-    //   }
-    // })
+    await queryInterface.addConstraint('refresh_tokens', {
+      type: 'foreign key',
+      name: 'REFRESH_TOKENS_USER_ID',
+      fields: ['user_id'],
+      references: {
+        table: 'users',
+        field: 'id'
+      }
+    })
   },
 
   async down (queryInterface, Sequelize) {
