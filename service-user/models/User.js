@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         updatedAt: {
             field: 'updated_at',
-            type: DataTypes.Dates,
+            type: DataTypes.DATE,
             allowNull: false,
         }
     }, {
@@ -50,13 +50,13 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
     });
 
-    User.hasOne(RefreshToken, {
-        foreignKey: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-        }
-    });
+    // User.hasOne(RefreshToken, {
+    //     foreignKey: {
+    //         type: DataTypes.UUID,
+    //         defaultValue: DataTypes.UUIDV4,
+    //         allowNull: false,
+    //     }
+    // });
 
     return User;
 }

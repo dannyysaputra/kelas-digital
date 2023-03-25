@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
     });
 
-    RefreshToken.belongsTo(User);
+    // RefreshToken.belongsTo(User);
 
     return RefreshToken;
 }
