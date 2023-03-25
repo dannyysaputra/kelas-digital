@@ -29,7 +29,7 @@ module.exports = {
     [{
       // id: faker.datatype.uuid(),
       name: name,
-      profesion: faker.helpers.arrayElement(['web developer', 'student']),
+      profession: faker.helpers.arrayElement(['web developer', 'student']),
       role: faker.helpers.arrayElement(['admin', 'student']),
       email: faker.helpers.unique(faker.internet.email, [name]),
       password: await bcrypt.hash(name, 10),
