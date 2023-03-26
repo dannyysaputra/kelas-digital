@@ -19,8 +19,13 @@ module.exports = {
       },
       user_id: {
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
+        references: {
+          model: {
+            tableName: 'users',
+          },
+          key: 'id'
+        }
       },
       created_at: {
         type: Sequelize.DATE,
@@ -31,17 +36,6 @@ module.exports = {
         allowNull: false,
       }
     });
-
-    // relation with users.id
-    await queryInterface.addConstraint('refresh_tokens', {
-      type: 'foreign key',
-      name: 'REFRESH_TOKENS_USER_ID',
-      fields: ['user_id'],
-      references: {
-        table: 'users',
-        field: 'id'
-      }
-    })
   },
 
   async down (queryInterface, Sequelize) {
