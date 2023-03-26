@@ -3,7 +3,6 @@ const router = express.Router();
 
 const mediaHandler = require('./handler/media') 
 
-/* POST media. */
 router.post('/', mediaHandler.create);
 router.get('/', mediaHandler.getAll);
 router.delete('/:id', mediaHandler.destroy);
