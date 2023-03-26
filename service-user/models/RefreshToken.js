@@ -12,6 +12,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false,
         }, 
+        user_id: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            foreignKey: true,
+            references: {
+                model: 'User',
+                key: 'id'
+            }
+        },
         createdAt: {
             type: DataTypes.DATE,
             field: 'created_at',
@@ -26,6 +35,12 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'refresh_tokens',
         timestamps: true,
     });
+
+    RefreshToken.associate = (models) => {
+        RefreshToken.belongsTo(models.User, {
+            foreignKey: 'user_id',
+        })
+    }
 
     // RefreshToken.belongsTo(User);
 

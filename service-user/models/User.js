@@ -50,6 +50,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true,
     });
 
+    User.associate = (models) => {
+        User.hasOne(models.RefreshToken, {
+            foreignKey: 'user_id'
+        })
+    }
+
     // User.hasOne(RefreshToken, {
     //     foreignKey: {
     //         type: DataTypes.UUID,
