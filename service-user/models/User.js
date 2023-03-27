@@ -56,13 +56,5 @@ module.exports = (sequelize, DataTypes) => {
         })
     }
 
-    // User.hasOne(RefreshToken, {
-    //     foreignKey: {
-    //         type: DataTypes.UUID,
-    //         defaultValue: DataTypes.UUIDV4,
-    //         allowNull: false,
-    //     }
-    // });
-
     return User;
 }
