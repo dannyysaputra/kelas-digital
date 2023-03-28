@@ -15,6 +15,11 @@ class Chapter extends Model
         'name', 'course_id'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d H:m:s',
+        'updated_at' => 'datetime:Y-m-d H:m:s',
+    ];
+
     /**
      * Get all of the lessons for the Chapter
      *
