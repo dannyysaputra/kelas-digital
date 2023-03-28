@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MentorController;
 use GuzzleHttp\Promise\Create;
@@ -29,3 +30,7 @@ Route::get('courses', [CourseController::class, 'index']);
 Route::post('courses', [CourseController::class, 'create']);
 Route::put('courses/{id}', [CourseController::class, 'update']);
 Route::delete('courses/{id}', [CourseController::class, 'destroy']);
+
+// chapter routes
+Route::post('chapters', [ChapterController::class, 'create']);
+Route::put('chapters/{id}', [ChapterController::class, 'update']);
