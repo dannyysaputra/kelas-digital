@@ -19,11 +19,11 @@ class CourseController extends Controller
         $q = $request->query('q');
         $status = $request->query('status');
 
-        $courses->when($q, function($query) use ($q){
-            return $query->whereRaw("name LIKE '%".strtolower($q)."%'");
+        $courses->when($q, function ($query) use ($q) {
+            return $query->whereRaw("name LIKE '%" . strtolower($q) . "%'");
         });
 
-        $courses->when($status, function($query) use ($status){
+        $courses->when($status, function ($query) use ($status) {
             return $query->where('status', '=', $status);
         });
 
@@ -36,9 +36,9 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::with('chapters.lessons')
-                        ->with('mentor')
-                        ->with('images')
-                        ->find($id);
+            ->with('mentor')
+            ->with('images')
+            ->find($id);
 
         if (!$course) {
             return response()->json([
@@ -96,7 +96,7 @@ class CourseController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Validation failed'
+                'message' => $validator->errors()
             ], 400);
         }
 
@@ -121,14 +121,14 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => '|string',
-            'certificate' => '|boolean',
+            'name' => 'string',
+            'certificate' => 'boolean',
             'thumbnail' => 'string|url',
-            'type' => '|in:free,premium',
-            'status' => '|in:draft,published',
+            'type' => 'in:free,premium',
+            'status' => 'in:draft,published',
             'price' => 'integer',
-            'level' => '|in:all-level,beginner,intermediate,advanced',
-            'mentor_id' => 'required',
+            'level' => 'in:all-level,beginner,intermediate,advanced',
+            'mentor_id' => '',
             'description' => 'string',
         ];
 
@@ -139,7 +139,7 @@ class CourseController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Validation failed'
+                'message' => $validator->errors()
             ], 400);
         }
 
