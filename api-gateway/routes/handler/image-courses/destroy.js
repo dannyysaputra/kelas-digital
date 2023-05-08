@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
         const imageCourse = await axios.delete(`${URL_SERVICE_COURSE}/api/image-courses/${id}`);
         return res.json(imageCourse.data);
     } catch (error) {
-        if (error.code === 'ECONNREFUSED ') {
+        if (error.code === 'ECONNREFUSED') {
             return res.status(500).json({ status: 'error', message: 'service unavailable' });
         }
         const { status, data } = error.response;
