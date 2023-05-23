@@ -5,7 +5,7 @@ import {useRouter} from 'next/router';
 
 import Link from 'next/link';
 
-import Logo from 'public/images/logo.svg';
+import Logo from '-!svg-react-loader!public/images/logo.svg';
 
 export default function header({onLight}) {
     const linkColor = onLight ? 'text-gray-900' : 'text-white'
@@ -85,6 +85,6 @@ export default function header({onLight}) {
     )
 }
 
-Header.propTypes = {
-    onLight: PropTypes.bool,
-}
+// Header.propTypes = {
+//     onLight: PropTypes.bool,
+// }

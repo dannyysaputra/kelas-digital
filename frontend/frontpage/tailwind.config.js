@@ -18,7 +18,7 @@ module.exports = {
       lg: '1024px',
       xl: '1280px',
     },
-    colors: ,
+    colors: colors,
     spacing: {
       px: '1px',
       '0': '0',
