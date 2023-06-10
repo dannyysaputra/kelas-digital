@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       status: 'success',
       data: {
         id: media.id,
-        image: `${req.get('host')}/images/${filename}`
+        image: `http://${req.get('host')}/images/${filename}`
       }
     });
   })
@@ -61,7 +61,7 @@ router.delete('/:id', async (req, res) => {
     return res.status(404).json({ status: 'error', message: 'Media not found'});
   }
 
-  fs.unlink(`./public/${media.image}`, async (err) => {
+  fs.unlink(`./p  ublic/${media.image}`, async (err) => {
     if (err) {
       return res.status(404).json({ status: 'error', message: err.message });
     }
