@@ -15,7 +15,7 @@ module.exports = {
       profession: faker.helpers.arrayElement(['web developer', 'student']),
       role: faker.helpers.arrayElement(['admin', 'student']),
       email: faker.helpers.unique(faker.internet.email, [name]),
-      password: await bcrypt.hash(name, 10),
+      password: await bcrypt.hash("12345678", 10),
       created_at: new Date(),
       updated_at: new Date(),  
     }]
