@@ -66,7 +66,7 @@ class CourseController extends Controller
         $finalTotalVideos = array_sum(array_column($totalVideos, 'lessons_count'));
 
         $course['reviews'] = $reviews;
-        $course['total_vidoes'] = $finalTotalVideos;
+        $course['total_videos'] = $finalTotalVideos;
         $course['total_students'] = $totalStudents;
 
         return response()->json([
